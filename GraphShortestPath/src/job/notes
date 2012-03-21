@@ -1,0 +1,10 @@
+Input Type would be:-
+	nodeid	nodeid1,nodeid2,..|distancefromsource|color
+
+at start distance would be Integer.maxint
+color would be white for all.
+
+once added into queue of breadfirst search they become gray.
+once fully processed they become black.
+
+A node class has to be written.

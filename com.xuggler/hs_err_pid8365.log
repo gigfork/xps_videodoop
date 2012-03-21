@@ -1,0 +1,621 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (safepoint.cpp:308), pid=8365, tid=2159287152
+#  guarantee(PageArmed == 0) failed: invariant
+#
+# JRE version: 6.0_26-b03
+# Java VM: Java HotSpot(TM) Server VM (20.1-b02 mixed mode linux-x86 )
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x08e7c800):  VMThread [stack: 0x80ac1000,0x80b42000] [id=8379]
+
+Stack: [0x80ac1000,0x80b42000],  sp=0x80b40e40,  free space=511k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x7248b0]  VMError::report_and_die()+0x2b0
+V  [libjvm.so+0x2f684e]  report_vm_error(char const*, int, char const*, char const*)+0x3e
+V  [libjvm.so+0x64d1f3]  SafepointSynchronize::begin()+0x503
+V  [libjvm.so+0x73406b]  VMThread::loop()+0x3cb
+V  [libjvm.so+0x733920]  VMThread::run()+0x80
+V  [libjvm.so+0x5e2aee]  java_start(Thread*)+0x14e
+C  [libpthread.so.0+0x5cc9]  short+0xd9
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x7f482c00 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=8387, stack(0x7f0fa000,0x7f14b000)]
+  0x80602c00 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=8385, stack(0x8052e000,0x8057f000)]
+  0x80600c00 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=8384, stack(0x8057f000,0x80600000)]
+  0x08e95000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=8383, stack(0x8074d000,0x807ce000)]
+  0x08e93400 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=8382, stack(0x807ce000,0x8081f000)]
+  0x08e85000 JavaThread "Finalizer" daemon [_thread_blocked, id=8381, stack(0x80a1f000,0x80a70000)]
+  0x08e80800 JavaThread "Reference Handler" daemon [_thread_blocked, id=8380, stack(0x80a70000,0x80ac1000)]
+  0x08d98000 JavaThread "main" [_thread_in_Java, id=8370, stack(0xb6913000,0xb6964000)]
+
+Other Threads:
+=>0x08e7c800 VMThread [stack: 0x80ac1000,0x80b42000] [id=8379]
+  0x8060cc00 WatcherThread [stack: 0x804ad000,0x8052e000] [id=8386]
+
+VM state:synchronizing (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x08d95f28] Safepoint_lock - owner thread: 0x08e7c800
+[0x08d95f90] Threads_lock - owner thread: 0x08e7c800
+
+Heap
+ PSYoungGen      total 13824K, used 7857K [0xa4120000, 0xa5080000, 0xb37c0000)
+  eden space 11904K, 56% used [0xa4120000,0xa47bb678,0xa4cc0000)
+  from space 1920K, 56% used [0xa4ea0000,0xa4fb0e90,0xa5080000)
+  to   space 1920K, 0% used [0xa4cc0000,0xa4cc0000,0xa4ea0000)
+ PSOldGen        total 31616K, used 2509K [0x853c0000, 0x872a0000, 0xa4120000)
+  object space 31616K, 7% used [0x853c0000,0x856334b8,0x872a0000)
+ PSPermGen       total 16384K, used 6671K [0x813c0000, 0x823c0000, 0x853c0000)
+  object space 16384K, 40% used [0x813c0000,0x81a43ee8,0x823c0000)
+
+Code Cache  [0xb388c000, 0xb3acc000, 0xb688c000)
+ total_blobs=297 nmethods=110 adapters=142 free_code_cache=49690304 largest_free_block=14016
+
+Dynamic libraries:
+08048000-08052000 r-xp 00000000 08:04 2886353    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/bin/java
+08052000-08053000 rwxp 00009000 08:04 2886353    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/bin/java
+08d92000-09529000 rwxp 00000000 00:00 0          [heap]
+7ec00000-7ecfa000 rwxp 00000000 00:00 0 
+7ecfa000-7ed00000 ---p 00000000 00:00 0 
+7ee00000-7eefe000 rwxp 00000000 00:00 0 
+7eefe000-7ef00000 ---p 00000000 00:00 0 
+7efcf000-7efd0000 r-xs 00000000 08:04 3810709    /var/cache/fontconfig/26de28bc8622bbc1fb67fd234c21975f-le32d4.cache-3
+7efd0000-7efd1000 r-xs 00000000 08:04 3803741    /var/cache/fontconfig/c05880de57d1f5e948fdfacc138775d9-le32d4.cache-3
+7efd1000-7efd7000 r-xs 00000000 08:04 3803738    /var/cache/fontconfig/945677eb7aeaf62f1d50efc3fb3ec7d8-le32d4.cache-3
+7efd7000-7efd9000 r-xs 00000000 08:04 3803739    /var/cache/fontconfig/99e8ed0e538f840c565b6ed5dad60d56-le32d4.cache-3
+7efd9000-7efdb000 r-xs 00000000 08:04 3807381    /var/cache/fontconfig/f24b2111ab8703b4e963115a8cf14259-le32d4.cache-3
+7efdb000-7efde000 r-xs 00000000 08:04 3803748    /var/cache/fontconfig/e383d7ea5fbe662a33d9b44caf393297-le32d4.cache-3
+7efde000-7efe4000 r-xs 00000000 08:04 3810710    /var/cache/fontconfig/401a5dd6b567794a1d18dd9342dfa604-le32d4.cache-3
+7efe4000-7efe7000 r-xs 00000000 08:04 3803318    /var/cache/fontconfig/2cd17615ca594fa2959ae173292e504c-le32d4.cache-3
+7efe7000-7efe8000 r-xs 00000000 08:04 3810966    /var/cache/fontconfig/e3fa16a14183b06aa45b3e009278fd14-le32d4.cache-3
+7efe8000-7efe9000 r-xs 00000000 08:04 3803749    /var/cache/fontconfig/e7071f4a29fa870f4323321c154eba04-le32d4.cache-3
+7efe9000-7efeb000 r-xs 00000000 08:04 3806061    /var/cache/fontconfig/b5ea634b0fb353b8ea17632d1f9ef766-le32d4.cache-3
+7efeb000-7efee000 r-xs 00000000 08:04 3803735    /var/cache/fontconfig/6eb3985aa4124903f6ff08ba781cd364-le32d4.cache-3
+7efee000-7efef000 r-xs 00000000 08:04 3803731    /var/cache/fontconfig/4c73fe0c47614734b17d736dbde7580a-le32d4.cache-3
+7efef000-7eff0000 r-xs 00000000 08:04 3803724    /var/cache/fontconfig/0d8c3b2ac0904cb8a57a757ad11a4a08-le32d4.cache-3
+7eff0000-7eff1000 r-xs 00000000 08:04 3803733    /var/cache/fontconfig/6a53c69dea097a2d716e069445527da8-le32d4.cache-3
+7eff1000-7eff5000 r-xs 00000000 08:04 3803740    /var/cache/fontconfig/a755afe4a08bf5b97852ceb7400b47bc-le32d4.cache-3
+7eff5000-7eff9000 r-xs 00000000 08:04 3810712    /var/cache/fontconfig/515ca1ebc4b18308bea979be5704f9db-le32d4.cache-3
+7eff9000-7f000000 r-xs 00000000 08:04 3810652    /var/cache/fontconfig/6d41288fd70b0be22e8c3a91e032eec0-le32d4.cache-3
+7f000000-7f00b000 r-xs 00000000 08:04 3803725    /var/cache/fontconfig/0f34bcd4b6ee430af32735b75db7f02b-le32d4.cache-3
+7f00b000-7f00e000 r-xs 00000000 08:04 3803745    /var/cache/fontconfig/d60319d88cac85ba9e1a07bd06cfbb8c-le32d4.cache-3
+7f00e000-7f00f000 r-xs 00000000 08:04 3805836    /var/cache/fontconfig/4794a0821666d79190d59a36cb4f44b5-le32d4.cache-3
+7f00f000-7f017000 r-xs 00000000 08:04 3803744    /var/cache/fontconfig/d52a8644073d54c13679302ca1180695-le32d4.cache-3
+7f0fa000-7f0fd000 ---p 00000000 00:00 0 
+7f0fd000-7f14b000 rwxp 00000000 00:00 0 
+7f14b000-7f1c4000 r-xp 00000000 08:04 2901178    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libfontmanager.so
+7f1c4000-7f1ce000 rwxp 00078000 08:04 2901178    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libfontmanager.so
+7f1ce000-7f1d3000 rwxp 00000000 00:00 0 
+7f1d3000-7f1eb000 r-xp 00000000 08:04 2363075    /usr/lib/libxcb.so.1.1.0
+7f1eb000-7f1ec000 r-xp 00017000 08:04 2363075    /usr/lib/libxcb.so.1.1.0
+7f1ec000-7f1ed000 rwxp 00018000 08:04 2363075    /usr/lib/libxcb.so.1.1.0
+7f1ed000-7f306000 r-xp 00000000 08:04 2362109    /usr/lib/libX11.so.6.3.0
+7f306000-7f307000 r-xp 00118000 08:04 2362109    /usr/lib/libX11.so.6.3.0
+7f307000-7f309000 rwxp 00119000 08:04 2362109    /usr/lib/libX11.so.6.3.0
+7f309000-7f30a000 rwxp 00000000 00:00 0 
+7f30a000-7f34d000 r-xp 00000000 08:04 2901173    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/xawt/libmawt.so
+7f34d000-7f34f000 rwxp 00043000 08:04 2901173    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/xawt/libmawt.so
+7f34f000-7f350000 rwxp 00000000 00:00 0 
+7f350000-7f3d5000 r-xp 00000000 08:04 2901170    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libawt.so
+7f3d5000-7f3dc000 rwxp 00085000 08:04 2901170    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libawt.so
+7f3dc000-7f400000 rwxp 00000000 00:00 0 
+7f400000-7f500000 rwxp 00000000 00:00 0 
+7f501000-7f50f000 r-xs 00000000 08:04 3804064    /var/cache/fontconfig/e13b20fdb08344e0e664864cc2ede53d-le32d4.cache-3
+7f50f000-7f513000 r-xp 00000000 08:04 2362124    /usr/lib/libXdmcp.so.6.0.0
+7f513000-7f514000 r-xp 00003000 08:04 2362124    /usr/lib/libXdmcp.so.6.0.0
+7f514000-7f515000 rwxp 00004000 08:04 2362124    /usr/lib/libXdmcp.so.6.0.0
+7f515000-7f521000 r-xp 00000000 08:04 2362134    /usr/lib/libXi.so.6.1.0
+7f521000-7f522000 r-xp 0000b000 08:04 2362134    /usr/lib/libXi.so.6.1.0
+7f522000-7f523000 rwxp 0000c000 08:04 2362134    /usr/lib/libXi.so.6.1.0
+7f523000-7f531000 r-xp 00000000 08:04 2362126    /usr/lib/libXext.so.6.4.0
+7f531000-7f532000 r-xp 0000d000 08:04 2362126    /usr/lib/libXext.so.6.4.0
+7f532000-7f533000 rwxp 0000e000 08:04 2362126    /usr/lib/libXext.so.6.4.0
+7f56c000-7f61b000 r-xp 00000000 08:04 4327925    /home/rohit/xuggler/lib/libx264.so.83
+7f61b000-7f61c000 rwxp 000af000 08:04 4327925    /home/rohit/xuggler/lib/libx264.so.83
+7f61c000-7f623000 rwxp 00000000 00:00 0 
+7f623000-7f63e000 r-xp 00000000 08:04 4327864    /home/rohit/xuggler/lib/libvorbis.so.0.4.0
+7f63e000-7f64c000 rwxp 0001b000 08:04 4327864    /home/rohit/xuggler/lib/libvorbis.so.0.4.0
+7f64c000-7f658000 r-xp 00000000 08:04 4327926    /home/rohit/xuggler/lib/libvorbisenc.so.2.0.3
+7f658000-7f746000 rwxp 0000c000 08:04 4327926    /home/rohit/xuggler/lib/libvorbisenc.so.2.0.3
+7f746000-7f75e000 r-xp 00000000 08:04 4327867    /home/rohit/xuggler/lib/libtheoradec.so.1.1.3
+7f75e000-7f75f000 rwxp 00017000 08:04 4327867    /home/rohit/xuggler/lib/libtheoradec.so.1.1.3
+7f75f000-7f7a2000 r-xp 00000000 08:04 4327873    /home/rohit/xuggler/lib/libtheoraenc.so.1.1.2
+7f7a2000-7f7a3000 rwxp 00042000 08:04 4327873    /home/rohit/xuggler/lib/libtheoraenc.so.1.1.2
+7f7a3000-7f7ba000 r-xp 00000000 08:04 4327905    /home/rohit/xuggler/lib/libspeex.so.1.5.0
+7f7ba000-7f7bb000 rwxp 00016000 08:04 4327905    /home/rohit/xuggler/lib/libspeex.so.1.5.0
+7f7bb000-7f7d3000 r-xp 00000000 08:04 4327903    /home/rohit/xuggler/lib/libopencore-amrwb.so.0.0.2
+7f7d3000-7f7d4000 rwxp 00017000 08:04 4327903    /home/rohit/xuggler/lib/libopencore-amrwb.so.0.0.2
+7f7d4000-7f807000 r-xp 00000000 08:04 4327954    /home/rohit/xuggler/lib/libopencore-amrnb.so.0.0.2
+7f807000-7f808000 rwxp 00032000 08:04 4327954    /home/rohit/xuggler/lib/libopencore-amrnb.so.0.0.2
+7f808000-7f84e000 r-xp 00000000 08:04 4327871    /home/rohit/xuggler/lib/libmp3lame.so.0.0.0
+7f84e000-7f84f000 rwxp 00046000 08:04 4327871    /home/rohit/xuggler/lib/libmp3lame.so.0.0.0
+7f84f000-7f880000 rwxp 00000000 00:00 0 
+7f880000-7f890000 r-xp 00000000 08:04 4327902    /home/rohit/xuggler/lib/libfaac.so.0.0.0
+7f890000-7f893000 rwxp 00010000 08:04 4327902    /home/rohit/xuggler/lib/libfaac.so.0.0.0
+7f893000-7f8ad000 r-xp 00000000 08:04 4063311    /lib/libgcc_s.so.1
+7f8ad000-7f8ae000 r-xp 00019000 08:04 4063311    /lib/libgcc_s.so.1
+7f8ae000-7f8af000 rwxp 0001a000 08:04 4063311    /lib/libgcc_s.so.1
+7f8af000-7f98e000 r-xp 00000000 08:04 2362965    /usr/lib/libstdc++.so.6.0.14
+7f98e000-7f992000 r-xp 000de000 08:04 2362965    /usr/lib/libstdc++.so.6.0.14
+7f992000-7f993000 rwxp 000e2000 08:04 2362965    /usr/lib/libstdc++.so.6.0.14
+7f993000-7f99a000 rwxp 00000000 00:00 0 
+7f99e000-7f9ac000 r-xs 00000000 08:04 3804057    /var/cache/fontconfig/865f88548240fee46819705c6468c165-le32d4.cache-3
+7f9ac000-7f9e0000 r-xp 00000000 08:04 4327865    /home/rohit/xuggler/lib/libswscale.so.0.9.0
+7f9e0000-7f9e1000 rwxp 00033000 08:04 4327865    /home/rohit/xuggler/lib/libswscale.so.0.9.0
+7f9e1000-7fef0000 r-xp 00000000 08:04 4327940    /home/rohit/xuggler/lib/libavcodec.so.52.49.0
+7fef0000-7fefa000 rwxp 0050e000 08:04 4327940    /home/rohit/xuggler/lib/libavcodec.so.52.49.0
+7fefa000-80349000 rwxp 00000000 00:00 0 
+80349000-80404000 r-xp 00000000 08:04 4327863    /home/rohit/xuggler/lib/libavformat.so.52.48.0
+80404000-8040a000 rwxp 000ba000 08:04 4327863    /home/rohit/xuggler/lib/libavformat.so.52.48.0
+8040a000-804aa000 r-xp 00000000 08:04 4327963    /home/rohit/xuggler/lib/libxuggle-xuggler.so.3.4.1012
+804aa000-804ad000 rwxp 0009f000 08:04 4327963    /home/rohit/xuggler/lib/libxuggle-xuggler.so.3.4.1012
+804ad000-804ae000 ---p 00000000 00:00 0 
+804ae000-8052e000 rwxp 00000000 00:00 0 
+8052e000-80531000 ---p 00000000 00:00 0 
+80531000-8057f000 rwxp 00000000 00:00 0 
+8057f000-80582000 ---p 00000000 00:00 0 
+80582000-80600000 rwxp 00000000 00:00 0 
+80600000-806ff000 rwxp 00000000 00:00 0 
+806ff000-80700000 ---p 00000000 00:00 0 
+80705000-80709000 r-xp 00000000 08:04 2362154    /usr/lib/libXtst.so.6.1.0
+80709000-8070a000 r-xp 00003000 08:04 2362154    /usr/lib/libXtst.so.6.1.0
+8070a000-8070b000 rwxp 00004000 08:04 2362154    /usr/lib/libXtst.so.6.1.0
+8070b000-8070f000 r-xp 00000000 08:04 4327909    /home/rohit/xuggler/lib/libogg.so.0.5.3
+8070f000-80710000 rwxp 00003000 08:04 4327909    /home/rohit/xuggler/lib/libogg.so.0.5.3
+80710000-8072c000 r-xp 00000000 08:04 4327896    /home/rohit/xuggler/lib/libxuggle-ferry.so.3.4.1012
+8072c000-8072d000 rwxp 0001c000 08:04 4327896    /home/rohit/xuggler/lib/libxuggle-ferry.so.3.4.1012
+8072d000-8073c000 r-xp 00000000 08:04 4327904    /home/rohit/xuggler/lib/libavutil.so.50.8.0
+8073c000-8073d000 rwxp 0000f000 08:04 4327904    /home/rohit/xuggler/lib/libavutil.so.50.8.0
+8073d000-80740000 rwxp 00000000 00:00 0 
+80740000-80746000 r-xp 00000000 08:04 4327931    /home/rohit/xuggler/lib/libavdevice.so.52.2.0
+80746000-80747000 rwxp 00005000 08:04 4327931    /home/rohit/xuggler/lib/libavdevice.so.52.2.0
+80747000-8074d000 r-xs 00053000 08:04 4327972    /home/rohit/xuggler/share/java/jars/xuggle-xuggler.jar
+8074d000-80750000 ---p 00000000 00:00 0 
+80750000-807ce000 rwxp 00000000 00:00 0 
+807ce000-807d1000 ---p 00000000 00:00 0 
+807d1000-8081f000 rwxp 00000000 00:00 0 
+8081f000-80a1f000 r-xp 00000000 08:04 2361694    /usr/lib/locale/locale-archive
+80a1f000-80a22000 ---p 00000000 00:00 0 
+80a22000-80a70000 rwxp 00000000 00:00 0 
+80a70000-80a73000 ---p 00000000 00:00 0 
+80a73000-80ac1000 rwxp 00000000 00:00 0 
+80ac1000-80ac2000 ---p 00000000 00:00 0 
+80ac2000-80b76000 rwxp 00000000 00:00 0 
+80b76000-80d0e000 r-xs 03029000 08:04 2491862    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/rt.jar
+80d0e000-80d0f000 ---p 00000000 00:00 0 
+80d0f000-80d8f000 rwxp 00000000 00:00 0 
+80d8f000-80d90000 ---p 00000000 00:00 0 
+80d90000-80e10000 rwxp 00000000 00:00 0 
+80e10000-80e11000 ---p 00000000 00:00 0 
+80e11000-80e91000 rwxp 00000000 00:00 0 
+80e91000-80e92000 ---p 00000000 00:00 0 
+80e92000-80f12000 rwxp 00000000 00:00 0 
+80f12000-80f13000 ---p 00000000 00:00 0 
+80f13000-80f93000 rwxp 00000000 00:00 0 
+80f93000-80f94000 ---p 00000000 00:00 0 
+80f94000-81014000 rwxp 00000000 00:00 0 
+81014000-81015000 ---p 00000000 00:00 0 
+81015000-81095000 rwxp 00000000 00:00 0 
+81095000-81096000 ---p 00000000 00:00 0 
+81096000-8111e000 rwxp 00000000 00:00 0 
+8111e000-81136000 rwxp 00000000 00:00 0 
+81136000-81146000 rwxp 00000000 00:00 0 
+81146000-8122d000 rwxp 00000000 00:00 0 
+8122d000-81235000 rwxp 00000000 00:00 0 
+81235000-8124d000 rwxp 00000000 00:00 0 
+8124d000-8125d000 rwxp 00000000 00:00 0 
+8125d000-81343000 rwxp 00000000 00:00 0 
+81343000-8134c000 rwxp 00000000 00:00 0 
+8134c000-813bf000 rwxp 00000000 00:00 0 
+813bf000-823c0000 rwxp 00000000 00:00 0 
+823c0000-853c0000 rwxp 00000000 00:00 0 
+853c0000-872a0000 rwxp 00000000 00:00 0 
+872a0000-a4120000 rwxp 00000000 00:00 0 
+a4120000-a5080000 rwxp 00000000 00:00 0 
+a5080000-b37c0000 rwxp 00000000 00:00 0 
+b37c1000-b37c4000 r-xs 00000000 08:04 3805979    /var/cache/fontconfig/7ef2298fde41cc6eeb7af42e48b7d293-le32d4.cache-3
+b37c4000-b37c6000 r-xs 00004000 08:04 4327971    /home/rohit/xuggler/share/java/jars/slf4j-api.jar
+b37c6000-b37cc000 r-xs 00033000 08:04 4327969    /home/rohit/xuggler/share/java/jars/logback-core.jar
+b37cc000-b37d5000 rwxp 00000000 00:00 0 
+b37d5000-b388c000 rwxp 00000000 00:00 0 
+b388c000-b3acc000 rwxp 00000000 00:00 0 
+b3acc000-b688c000 rwxp 00000000 00:00 0 
+b688c000-b689b000 r-xp 00000000 08:04 2901155    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libzip.so
+b689b000-b689d000 rwxp 0000e000 08:04 2901155    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libzip.so
+b689d000-b68a7000 r-xp 00000000 08:04 4063485    /lib/libnss_files-2.12.1.so
+b68a7000-b68a8000 r-xp 00009000 08:04 4063485    /lib/libnss_files-2.12.1.so
+b68a8000-b68a9000 rwxp 0000a000 08:04 4063485    /lib/libnss_files-2.12.1.so
+b68a9000-b68b2000 r-xp 00000000 08:04 4067043    /lib/libnss_nis-2.12.1.so
+b68b2000-b68b3000 r-xp 00008000 08:04 4067043    /lib/libnss_nis-2.12.1.so
+b68b3000-b68b4000 rwxp 00009000 08:04 4067043    /lib/libnss_nis-2.12.1.so
+b68b4000-b68ba000 r-xp 00000000 08:04 4063483    /lib/libnss_compat-2.12.1.so
+b68ba000-b68bb000 r-xp 00006000 08:04 4063483    /lib/libnss_compat-2.12.1.so
+b68bb000-b68bc000 rwxp 00007000 08:04 4063483    /lib/libnss_compat-2.12.1.so
+b68bc000-b68cf000 r-xp 00000000 08:04 4063482    /lib/libnsl-2.12.1.so
+b68cf000-b68d0000 r-xp 00012000 08:04 4063482    /lib/libnsl-2.12.1.so
+b68d0000-b68d1000 rwxp 00013000 08:04 4063482    /lib/libnsl-2.12.1.so
+b68d1000-b68d3000 rwxp 00000000 00:00 0 
+b68d3000-b68d5000 r-xp 00000000 08:04 2362113    /usr/lib/libXau.so.6.0.0
+b68d5000-b68d6000 r-xp 00001000 08:04 2362113    /usr/lib/libXau.so.6.0.0
+b68d6000-b68d7000 rwxp 00002000 08:04 2362113    /usr/lib/libXau.so.6.0.0
+b68d7000-b68dc000 r-xs 00022000 08:04 4327973    /home/rohit/xuggler/share/java/jars/logback-classic.jar
+b68dc000-b68dd000 r-xs 00008000 08:04 4327968    /home/rohit/xuggler/share/java/jars/commons-cli.jar
+b68dd000-b68e5000 rwxs 00000000 08:04 657300     /tmp/hsperfdata_rohit/8365
+b68e5000-b6908000 r-xp 00000000 08:04 2901152    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libjava.so
+b6908000-b690a000 rwxp 00023000 08:04 2901152    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libjava.so
+b690a000-b6911000 r-xp 00000000 08:04 4067232    /lib/librt-2.12.1.so
+b6911000-b6912000 r-xp 00006000 08:04 4067232    /lib/librt-2.12.1.so
+b6912000-b6913000 rwxp 00007000 08:04 4067232    /lib/librt-2.12.1.so
+b6913000-b6916000 ---p 00000000 00:00 0 
+b6916000-b6964000 rwxp 00000000 00:00 0 
+b6964000-b6988000 r-xp 00000000 08:04 4063480    /lib/libm-2.12.1.so
+b6988000-b6989000 r-xp 00023000 08:04 4063480    /lib/libm-2.12.1.so
+b6989000-b698a000 rwxp 00024000 08:04 4063480    /lib/libm-2.12.1.so
+b698a000-b713c000 r-xp 00000000 08:04 2901140    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/server/libjvm.so
+b713c000-b7190000 rwxp 007b1000 08:04 2901140    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/server/libjvm.so
+b7190000-b75af000 rwxp 00000000 00:00 0 
+b75af000-b7706000 r-xp 00000000 08:04 4063476    /lib/libc-2.12.1.so
+b7706000-b7708000 r-xp 00157000 08:04 4063476    /lib/libc-2.12.1.so
+b7708000-b7709000 rwxp 00159000 08:04 4063476    /lib/libc-2.12.1.so
+b7709000-b770c000 rwxp 00000000 00:00 0 
+b770c000-b770e000 r-xp 00000000 08:04 4063479    /lib/libdl-2.12.1.so
+b770e000-b770f000 r-xp 00001000 08:04 4063479    /lib/libdl-2.12.1.so
+b770f000-b7710000 rwxp 00002000 08:04 4063479    /lib/libdl-2.12.1.so
+b7710000-b7717000 r-xp 00000000 08:04 2901154    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/jli/libjli.so
+b7717000-b7719000 rwxp 00006000 08:04 2901154    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/jli/libjli.so
+b7719000-b771a000 rwxp 00000000 00:00 0 
+b771a000-b772f000 r-xp 00000000 08:04 4067056    /lib/libpthread-2.12.1.so
+b772f000-b7730000 ---p 00015000 08:04 4067056    /lib/libpthread-2.12.1.so
+b7730000-b7731000 r-xp 00015000 08:04 4067056    /lib/libpthread-2.12.1.so
+b7731000-b7732000 rwxp 00016000 08:04 4067056    /lib/libpthread-2.12.1.so
+b7732000-b7734000 rwxp 00000000 00:00 0 
+b7734000-b7737000 r-xs 0002a000 08:04 4327970    /home/rohit/xuggler/share/java/jars/xuggle-xuggler-test.jar
+b7737000-b7738000 r-xp 0029c000 08:04 2361694    /usr/lib/locale/locale-archive
+b7738000-b7739000 rwxp 00000000 00:00 0 
+b7739000-b773a000 ---p 00000000 00:00 0 
+b773a000-b7745000 r-xp 00000000 08:04 2901151    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libverify.so
+b7745000-b7746000 rwxp 0000b000 08:04 2901151    /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/libverify.so
+b7746000-b7748000 rwxp 00000000 00:00 0 
+b7748000-b7749000 r-xp 00000000 00:00 0          [vdso]
+b7749000-b7765000 r-xp 00000000 08:04 4063473    /lib/ld-2.12.1.so
+b7765000-b7766000 r-xp 0001b000 08:04 4063473    /lib/ld-2.12.1.so
+b7766000-b7767000 rwxp 0001c000 08:04 4063473    /lib/ld-2.12.1.so
+bf8b9000-bf8da000 rwxp 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: GetContainer
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/rohit/xuggler/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+USERNAME=rohit
+LD_LIBRARY_PATH=/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/server:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/../lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386/client:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386:/home/rohit/xuggler/lib:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x725510], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x725510], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x5dff20], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x5dff20], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x5dff20], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x5dff20], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x5e3160], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x5e2d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x5e2d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x5e2d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x5e2d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:squeeze/sid
+
+uname:Linux 2.6.35-30-generic #56-Ubuntu SMP Mon Jul 11 20:00:22 UTC 2011 i686
+libc:glibc 2.12.1 NPTL 2.12.1 
+rlimit: STACK 8192k, CORE 0k, NPROC infinity, NOFILE 1024, AS infinity
+load average:4.28 4.17 3.82
+
+/proc/meminfo:
+MemTotal:        3030032 kB
+MemFree:          454856 kB
+Buffers:          118280 kB
+Cached:           990652 kB
+SwapCached:            0 kB
+Active:          1606740 kB
+Inactive:         818328 kB
+Active(anon):    1321300 kB
+Inactive(anon):    15864 kB
+Active(file):     285440 kB
+Inactive(file):   802464 kB
+Unevictable:          32 kB
+Mlocked:              32 kB
+HighTotal:       2169808 kB
+HighFree:           2784 kB
+LowTotal:         860224 kB
+LowFree:          452072 kB
+SwapTotal:      12845052 kB
+SwapFree:       12845052 kB
+Dirty:              1724 kB
+Writeback:             0 kB
+AnonPages:       1316364 kB
+Mapped:           192192 kB
+Shmem:             21028 kB
+Slab:              51464 kB
+SReclaimable:      30420 kB
+SUnreclaim:        21044 kB
+KernelStack:        4920 kB
+PageTables:        13576 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    14360068 kB
+Committed_AS:    4875248 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       85460 kB
+VmallocChunk:      27132 kB
+HardwareCorrupted:     0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       4096 kB
+DirectMap4k:       73720 kB
+DirectMap4M:      835584 kB
+
+
+CPU:total 8 (4 cores per cpu, 2 threads per core) family 6 model 30 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 1730.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.53
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 1730.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.45
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 931.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.45
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 1730.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.45
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 931.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.44
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 1730.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.45
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 1730.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 5
+initial apicid	: 5
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.45
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 1730.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 7
+initial apicid	: 7
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.47
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3030032k(454856k free), swap 12845052k(12845052k free)
+
+vm_info: Java HotSpot(TM) Server VM (20.1-b02) for linux-x86 JRE (1.6.0_26-b03), built on May  4 2011 01:04:10 by "java_re" with gcc 3.2.1-7a (J2SE release)
+
+time: Sat Aug 13 00:32:22 2011
+elapsed time: 5604 seconds
+
